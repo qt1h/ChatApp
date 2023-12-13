@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+/*background-color: rgba(93, 38, 188, 0.8);*/
+.hero {
+    background-image: url(img/background.png);
+    filter:saturate(2.5);
+    padding: 20px;
+    text-align: center;
+}
+
+.forum {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.forum h2 {
+    margin-bottom: 20px;
+}
+
+.forum ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.forum ul li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.forum ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* Thème sombre / bleu nuit */
+body.dark {
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+body.dark header {
+    background-color: #1f1f1f;
+}
+
+body.dark nav ul li a {
+    color: #fff;
+}
+
+body.dark main {
+    background-color: #1f1f1f;
+}
+
+body.dark .forum {
+    background-color: #1f1f1f;
+}
+
+body.dark footer {
+    background-color: #1f1f1f;
+}
+:root {
+    --background-color: #6a5acd;
+   }

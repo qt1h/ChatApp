@@ -7,18 +7,30 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #333;
     padding: 20px;
+}
+
+#logo {
+    border-radius: 50%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    display: flex;
 }
 
 nav ul li {
-    display: inline;
     margin-right: 10px;
 }
 
@@ -33,8 +45,8 @@ main {
 
 /*background-color: rgba(93, 38, 188, 0.8);*/
 .hero {
-    background-image: url(img/background.png);
-    filter:saturate(2.5);
+    background-color:#381C48;
+    filter:saturate(2.2);
     padding: 20px;
     text-align: center;
 }

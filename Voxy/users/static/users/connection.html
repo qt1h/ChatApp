@@ -4,77 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #381C48;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .login-container {
-            width: 400px;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .login-container h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            outline: none;
-            border-radius: 5px;
-        }
-
-        .login-container input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #381C48;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .login-container input[type="submit"]:hover {
-            background-color: #5a3e7a;
-        }
-
-        .login-container a {
-            text-align: center;
-            display: block;
-            margin-top: 20px;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .login-container a:hover {
-            color: #5a3e7a;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark" id="connection">
+    <header>
+        <img id="logo" src="img/logoVoxy.png" alt="Voxy" width="8%" height="8%"/>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="connection.html">Login</a></li>
+                <li><a href="chatrooms.html">Chatrooms</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="login-container">
-        <h2>Login</h2>
-        <form>
+        <h2>Connection</h2>
+        <form id="login-form" method="post">
+            {% csrf_token %}
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Login">
+            <div class="form-buttons">
+                <input type="submit" value="Log in" onclick="setFormAction('/login')" id="login">
+                <input type="submit" value="Sign in" onclick="setFormAction('/signin')" id="signin">
+            </div>
         </form>
-        <a href="#">Forgot password?</a>
+        <a href="/forgot-password">Forgot password?</a>
+        <script>
+            function setFormAction(action) {
+                document.getElementById('login-form').action = action;
+            }
+        </script>
     </div>
 </body>
 </html>

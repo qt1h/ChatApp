@@ -23,4 +23,4 @@ def log_in(request):
                 return redirect('home')  # Redirect to your home page after successful login
     else:
         form = AuthenticationForm()
-    return render(request, 'log_in.html', {'form': form})
+    return render(request, 'users/connection.html', {'form': form})

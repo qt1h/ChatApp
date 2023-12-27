@@ -63,7 +63,7 @@ body {
     padding: 10px 20px;
     background-color: #23272A;
     color: white;
-    height: 60px; /* Ajustez la hauteur de la barre supérieure selon vos besoins */
+    height: 60px; 
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -73,9 +73,9 @@ body {
 }
 
 .box-logo img {
-    max-height: 150px; /* Utilisez la hauteur maximale en pourcentage de la barre supérieure */
-    width: auto; /* Assurez-vous que la largeur s'ajuste automatiquement en fonction de la hauteur */
-    margin-right: 10px; /* Ajustez la marge selon vos besoins */
+    max-height: 150px; 
+    width: auto; 
+    margin-right: 10px; 
 }
 
 .box-logo p {

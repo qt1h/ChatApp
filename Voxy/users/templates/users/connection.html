@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +13,8 @@
         <img id="logo" src="{% static 'img/logosite1.png' %}" alt="Voxy" width="8%" height="8%"/>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="connection.html">Login</a></li>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'users:login' %}">Login</a></li>
                 <li><a href="chatrooms.html">Chatrooms</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
@@ -24,13 +23,19 @@
     <main class="violet">
     <div class="login-container">
         <h2>Connection</h2>
-        <form id="login-form" method="post">
+        <form id="login-form" method="post" action="{% url 'users:sign_up' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-buttons">
+                <input type="submit" value="Sign up" id="signup">
+            </div>
+        </form>
+        <form id="login-form" method="post" action="{% url 'users:log_in' %}">
             {% csrf_token %}
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <div class="form-buttons">
-                <input type="submit" value="Log in" onclick="setFormAction('/login')" id="login">
-                <input type="submit" value="Sign in" onclick="setFormAction('/signin')" id="signin">
+                <input type="submit" value="Log in" id="login">
             </div>
         </form>
         <a href="/forgot-password">Forgot password?</a>

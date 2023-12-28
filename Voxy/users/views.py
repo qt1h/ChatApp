@@ -8,10 +8,10 @@ def sign_up(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')  # Redirect to your home page after successful sign-up
+            return redirect('users:index')  # Redirect to your home page after successful sign-up
     else:
         form = UserCreationForm()
-    return render(request, 'sign_up.html', {'form': form})
+    return render(request, 'users/connection.html', {'form': form})
 
 def log_in(request):
     if request.method == 'POST':
@@ -20,7 +20,13 @@ def log_in(request):
             user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('home')  # Redirect to your home page after successful login
+                return redirect('index')  # Redirect to your home page after successful login
     else:
         form = AuthenticationForm()
     return render(request, 'users/connection.html', {'form': form})
+
+def index_view(request):
+    return render(request, 'index.html')
+
+def connnexion_view(request):
+    return render(request, 'users/connection.html')

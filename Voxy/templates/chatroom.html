@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,12 +7,12 @@
     <title>Voxy - Chat en ligne</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- sert pour les boutons -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
+<body class="chatroom">
     <div class="barre-haut">
         <div class="box-logo">
-            <img src="img/logo_transparent.png" alt="logo de l'application" />
+            <img src="{% static 'img/logo_transparent.png' %"} alt="logo de l'application" />
             <p>Voxy - Chat en ligne de père en fils</p>
         </div>
         <div class="boutons-haut">

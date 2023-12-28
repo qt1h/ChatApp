@@ -1,14 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voxy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="dark index-page">
     <header>
-        <img id="logo" src="img/logosite1.png" alt="Voxy" width="8%" height="8%"/>
+        <img id="logo" src="{% static 'img/logosite1.png' %}" alt="Voxy" width="8%" height="8%"/>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>

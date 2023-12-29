@@ -22,5 +22,5 @@ urlpatterns = [
     path('', views.index_view, name='index'),
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
-    path('chatroom/', views.chatroom, name='chatroom'),
+    path('chatrooms/', include('chatrooms.urls')),
 ]

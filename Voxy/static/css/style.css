@@ -8,8 +8,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+    align-items: center; 
     height: 10%;
     background-color: #1f1f1f;
     width: 100%;
@@ -26,8 +25,6 @@ nav {
 }
 
 nav ul {
-    margin: 0;
-    padding: 0;
     list-style-type: none;
     display: flex;
 }
@@ -42,7 +39,6 @@ nav ul li a {
 }
 
 main {
-    padding: 20px;
     width: 100%;
     height: 100%;
 }
@@ -89,7 +85,7 @@ body.dark nav ul li a {
     color: #fff;
 }
 
-body.dark footer {
+footer{
     background-color: #1f1f1f;
     position: fixed;
     bottom: 0%;
@@ -102,10 +98,6 @@ body.dark footer {
 /* Connection page */
 
 
-#container {
-    position: relative;
-    
-}
 
 .ring {
     position: absolute;
@@ -206,7 +198,7 @@ body.dark footer {
 }
 
 #container {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: #23272A;
@@ -216,8 +208,7 @@ body.dark footer {
     
 }
 #container {
-    max-height: 80vh;
-    overflow: auto;  /* Enable scrolling for the container */
+    overflow-y: auto;  /* Enable scrolling for the container */
 }
 
 .login #signup {
@@ -225,7 +216,7 @@ body.dark footer {
     overflow-y: auto; /* Enable scrolling for the login section */
 }
 #signup-form, #login-form {
-    top:10%;
+    
     position: relative; /* or position: static; */
 }
 

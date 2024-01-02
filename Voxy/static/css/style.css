@@ -101,76 +101,157 @@ body.dark footer {
 
 /* Connection page */
 
-.violet{
-    background-color: #381C48;
-    filter: saturate(2.2);
-    margin-top: 0 ;
-    margin-bottom: -5% ;
+
+#container {
+    position: relative;
+    
 }
 
+.ring {
+    position: absolute;
+    width: 600px; /* Ajusté la taille des anneaux */
+    height: 600px; /* Ajusté la taille des anneaux */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
-.login-container {
-    width: 20%;
-    padding: 30px;
-    margin: 7% auto 9%;
-    background-color: #1f1f1f;
+.ring i {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #fff;
+    transition: 0.5s;
+}
+
+.ring i:nth-child(1) {
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    animation: animate 6s linear infinite;
+}
+
+.ring i:nth-child(2) {
+    border-radius: 41% 44% 56% 59% / 38% 62% 63% 37%;
+    animation: animate 4s linear infinite;
+}
+
+.ring i:nth-child(3) {
+    border-radius: 41% 44% 55% 59% / 38% 62% 63% 37%;
+    animation: animate 10s linear infinite;
+}
+
+.ring:hover i {
+    border: 6px solid var(--clr);
+    filter: drop-shadow(0 0 20px var(--clr));
+}
+
+.login {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fond du formulaire de login */
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    z-index: 2; /* Mettez les formulaires au-dessus des anneaux */
+    position: relative; /* Ajout de position relative */
 }
 
-.login-container h2 {
-    text-align: center;
+.login h2 {
+    font-size: 2em;
     color: #fff;
-    margin-bottom: 20px;
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: calc(100% - 20px); /* Largeur ajustée avec une marge totale de 20px (10px de chaque côté) */
-    padding: 10px;
-    margin: 10px auto; /* Utilisation de 'auto' pour centrer les champs verticalement */
-    border: 1px solid #ccc;
+
+
+.login  input {
+    width: calc(100% - 40px); /* Ajusté la largeur pour éviter le dépassement */
+    padding: 12px 20px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    font-size: 1.2em;
+    color: #fff;
+    box-shadow: none;
     outline: none;
-    border-radius: 5px;
 }
 
-.login-container input[type="submit"] {
+.login input[type="submit"] {
     width: 100%;
-    padding: 10px;
-    background-color: #5a3e7a;
-    color: #fff;
+    background: #0078ff;
+    background: linear-gradient(45deg, #c235ff, #a372ff);
     border: none;
     cursor: pointer;
-    border-radius: 5px;
 }
 
-.login-container input[type="submit"]:hover {
-    background-color: #7d579a;
+.login  input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
 }
 
-.login-container a {
-    text-align: center;
-    display: block;
-    margin-top: 20px;
+.login .links {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.login .links a {
     color: #fff;
     text-decoration: none;
 }
 
-.login-container a:hover {
-    background-color: #381C48;
-    filter: saturate(2.2);
+#container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #23272A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#container {
+    max-height: 80vh;
+    overflow: auto;  /* Enable scrolling for the container */
 }
 
+.login #signup {
+    max-height: 60%; /* Set a maximum height for the login section */
+    overflow-y: auto; /* Enable scrolling for the login section */
+}
+#signup-form, #login-form {
+    top:10%;
+    position: relative; /* or position: static; */
+}
+
+
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
 /* Login/signin buttons */
-#login-form {
+#login-form, #signup-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     max-width: 300px;
+    color:#ccc;
 }
 
 #login,
-#signin {
+#signup {
     background-color: #000;
     color: #ccc;
     border: none;
@@ -178,13 +259,16 @@ body.dark footer {
     cursor: pointer;
 }
 
-#signin {
+#signup {
     margin-top: 10px;
 }
 
 #login:hover,
-#signin:hover {
+#signup:hover {
     background-color: #1f1f1f;
+}
+.errorlist{
+    color:#ccc;
 }
 /* Chatroom page */
 .chatroom body {
@@ -431,3 +515,6 @@ body.dark footer {
 .chatroom .ajouter-salon button:hover {
     background-color: rgb(49, 49, 170);
 }
+/* login */
+
+

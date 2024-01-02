@@ -3,6 +3,8 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    
 }
 
 header {
@@ -87,10 +89,10 @@ body.dark nav ul li a {
 
 footer{
     background-color: #1f1f1f;
-    position: fixed;
+    position: absolute;
     bottom: 0%;
     width: 100%;
-    padding: 20px;
+  	height:5%;
     text-align: center;
     color: white;
 }
@@ -204,22 +206,18 @@ footer{
     background-color: #23272A;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
-}
-#container {
-    overflow-y: auto;  /* Enable scrolling for the container */
+    align-items: center;  
+    overflow: hidden;
 }
 
-.login #signup {
+.login {
     max-height: 60%; /* Set a maximum height for the login section */
     overflow-y: auto; /* Enable scrolling for the login section */
+    position: fixed;
+    display: inline-block;
+    margin-top:20%;
+    margin-bottom:20%;
 }
-#signup-form, #login-form {
-    
-    position: relative; /* or position: static; */
-}
-
 
 
 @keyframes animate {
@@ -234,6 +232,7 @@ footer{
 
 /* Login/signin buttons */
 #login-form, #signup-form {
+    position: relative; /* or position: static; */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -243,6 +242,7 @@ footer{
 
 #login,
 #signup {
+    
     background-color: #000;
     color: #ccc;
     border: none;
@@ -507,5 +507,4 @@ footer{
     background-color: rgb(49, 49, 170);
 }
 /* login */
-
 

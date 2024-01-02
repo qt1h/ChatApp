@@ -32,7 +32,23 @@
             <h2>Login</h2>
             <form id="signup-form" method="post" action="{% url 'users:sign_up' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
+                
+                {# Afficher seulement le message d'aide global #}
+                {% if form.non_field_errors %}
+                    <div class="error-message">{{ form.non_field_errors }}</div>
+                {% endif %}
+                
+                {% for field in form %}
+                    <div class="form-field">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        <span class="help-text">{{ field.help_text }}</span>
+                        {% for error in field.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                
                 <div class="form-buttons">
                     <input type="submit" value="Sign up" id="signup">
                 </div>

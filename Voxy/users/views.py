@@ -1,17 +1,28 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.password_validation import validate_password
+from django.utils.translation import gettext_lazy as _
+
 
 def sign_up(request):
     if request.method == 'POST':
+        # Créer une instance du formulaire
         form = UserCreationForm(request.POST)
+
+        # Modifier les messages d'aide dynamiquement
+        form.fields['username'].help_text = ''#Will be displayed
+        form.fields['password1'].help_text = ''#Decide a new password
+
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            return redirect('users:index')  # Redirect to your home page after successful sign-up
+            return redirect('users:index')  # Rediriger vers la page d'accueil après une inscription réussie
     else:
+        # Si la méthode n'est pas POST, créer une instance normale du formulaire
         form = UserCreationForm()
-    return render(request, 'users/connection.html', {'form': form})
+
+    context = {'form': form}
+    return render(request, 'users/connection.html', context)
 
 def log_in(request):
     if request.method == 'POST':

@@ -108,7 +108,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -136,23 +136,32 @@ footer{
 }
 
 .ring:hover i {
-    border: 6px solid var(--clr);
+    border: 6px solid var(--clr); 
     filter: drop-shadow(0 0 20px var(--clr));
 }
 
 .login {
     width: 300px;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
-    background-color: rgba(0, 0, 0, 0.7); /* Fond du formulaire de login */
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 50px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    z-index: 2; /* Mettez les formulaires au-dessus des anneaux */
-    position: relative; /* Ajout de position relative */
+    z-index: 2;
+    position: relative;
+
+    /* Ajoutez les propriétés suivantes pour permettre le défilement vertical */
+    max-height: 80%; /* ou une valeur appropriée en fonction de votre mise en page */
+    overflow-y: auto;
+    margin-top:30%;
+    margin-bottom:30%;
+    text-align: center;
+    
+    
 }
 
 .login h2 {
@@ -161,8 +170,7 @@ footer{
 }
 
 
-
-.login  input {
+.login input {
     width: calc(100% - 40px); /* Ajusté la largeur pour éviter le dépassement */
     padding: 12px 20px;
     background: transparent;
@@ -182,7 +190,7 @@ footer{
     cursor: pointer;
 }
 
-.login  input::placeholder {
+.login input::placeholder {
     color: rgba(255, 255, 255, 0.75);
 }
 
@@ -199,6 +207,10 @@ footer{
     text-decoration: none;
 }
 
+.form-buttons{
+    padding:20px;
+}
+
 #container {
     position: fixed;
     width: 100%;
@@ -210,15 +222,21 @@ footer{
     overflow: hidden;
 }
 
-.login {
-    max-height: 60%; /* Set a maximum height for the login section */
-    overflow-y: auto; /* Enable scrolling for the login section */
-    position: fixed;
-    display: inline-block;
-    margin-top:20%;
-    margin-bottom:20%;
+::-webkit-scrollbar {
+    width: 12px; /* largeur de la scrollbar */
+    height: fit-content;
 }
-
+  
+::-webkit-scrollbar-track {
+    background-color: #000; /* couleur de fond de la scrollbar */
+    border-radius: 6px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #23272A; /* couleur de la poignée de la scrollbar */
+    border-radius: 6px; /* coins arrondis de la poignée */
+    height:20%;
+}
 
 @keyframes animate {
     0% {
@@ -242,16 +260,11 @@ footer{
 
 #login,
 #signup {
-    
     background-color: #000;
     color: #ccc;
     border: none;
     padding: 10px;
     cursor: pointer;
-}
-
-#signup {
-    margin-top: 10px;
 }
 
 #login:hover,
@@ -506,5 +519,4 @@ footer{
 .chatroom .ajouter-salon button:hover {
     background-color: rgb(49, 49, 170);
 }
-/* login */
 

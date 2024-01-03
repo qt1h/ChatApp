@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'users:login' %}">Login</a></li>
-                <li><a href="../chatrooms/chatroom.html">Chatrooms</a></li>
+                <li><a href="{% url 'chatrooms:chatroom' %}">Chatrooms</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
         </nav>
@@ -27,45 +27,47 @@
             <i style="--clr:#460fc8;"></i>
             <i style="--clr:#a248d2;"></i>
             <i style="--clr:#491664;"></i>
-        </div>
-        <div class="login">
-            <h2>Login</h2>
-            <form id="signup-form" method="post" action="{% url 'users:sign_up' %}">
-                {% csrf_token %}
-                
-                {# Afficher seulement le message d'aide global #}
-                {% if form.non_field_errors %}
-                    <div class="error-message">{{ form.non_field_errors }}</div>
-                {% endif %}
-                
-                {% for field in form %}
-                    <div class="form-field">
-                        {{ field.label_tag }}
-                        {{ field }}
-                        <span class="help-text">{{ field.help_text }}</span>
-                        {% for error in field.errors %}
-                            <div class="error-message">{{ error }}</div>
-                        {% endfor %}
+            <div class="login">
+                <h2>Login</h2>
+                <form id="signup-form" method="post" action="{% url 'users:sign_up' %}">
+                    {% csrf_token %}
+                    
+                    {# Afficher seulement le message d'aide global #}
+                    {% if form.non_field_errors %}
+                        <div class="error-message">{{ form.non_field_errors }}</div>
+                    {% endif %}
+                    
+                    {% for field in form %}
+                        <div class="form-field">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            <span class="help-text">{{ field.help_text }}</span>
+                            {% for error in field.errors %}
+                                <div class="error-message">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    
+                    <div class="form-buttons">
+                        <input type="submit" value="Sign up" id="signup">
                     </div>
-                {% endfor %}
-                
-                <div class="form-buttons">
-                    <input type="submit" value="Sign up" id="signup">
-                </div>
-            </form>
-            <form id="login-form" method="post" action="{% url 'users:log_in' %}">
-                {% csrf_token %}
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <div class="form-buttons">
-                    <input type="submit" value="Log in" id="login">
-                </div>
-            </form>
-            <a href="/forgot-password">Forgot password?</a>
+                </form>
+                <form id="login-form" method="post" action="{% url 'users:log_in' %}">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <div class="form-buttons">
+                        <input type="submit" value="Log in" id="login">
+                    </div>
+                </form>
+                <a href="/forgot-password">Forgot password?</a>
+            </div>
         </div>
+       
     </div>
     <footer>
         <p>&copy; 2023 Voxy. Tous droits réservés.</p>
     </footer>
+    <!-- TODO fix the scrollbarposition when launching the signup-->
 </body>
 </html>

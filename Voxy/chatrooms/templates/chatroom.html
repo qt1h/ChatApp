@@ -43,26 +43,16 @@
                 <button>+</button>
                 <div class="ajouter-salon-titre">Ajouter Salon</div>
             </div>
-            <div class="encadre-salon">
-                <h3>Salon 1</h3>
-                <p>Description</p>
-            </div>
-            <div class="encadre-salon">
-                <h3>Salon 2</h3>
-                <p>Description</p>
-            </div>
-            <div class="encadre-salon">
-                <h3>Salon 3</h3>
-                <p>Description</p>
-            </div>
-            <div class="encadre-salon">
-                <h3>Salon 4</h3>
-                <p>Description</p>
-            </div>
-            <div class="encadre-salon">
-                <h3>Salon 5</h3>
-                <p>Description</p>
-            </div>
+
+            {% for chatroom in accessible_chatrooms %}
+                <div class="encadre-salon">
+                    <a href="{% url 'chatroom_messages' chatroom.id %}">
+                        <h3>{{ chatroom.name }}</h3>
+                        <p>{{ chatroom.description }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+
         </div>
         <div class="section-chat">
             <div class="message-serveur">
@@ -72,12 +62,29 @@
                 <input type="text" placeholder="Tapez votre message...">
                 <button id="bouton-envoi">Envoyer</button>
             </div>
-        </div>
-        <div class="liste-utilisateurs">
-            <div class="section-titre">
-                <h2>Membres</h2>
-            </div>
-            <!-- Liste des membres-->
+
+            {% if chatroom %}
+                <div class="messages-list">
+                    <h2>Messages du salon {{ chatroom.name }}</h2>
+                    {% for message in chatroom.messages.all %}
+                        <div class="message">
+                            <p><strong>{{ message.sender.username }}</strong>: {{ message.content }}</p>
+                            <p>{{ message.timestamp }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="liste-utilisateurs">
+                    <div class="section-titre">
+                        <h2>Membres</h2>
+                    </div>
+
+                    {% for participant in chatroom.participants.all %}
+                        <div>{{ participant.username }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
         </div>
     </div>
     <div class="barre-bas">

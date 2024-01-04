@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import ChatRoom
-from .forms import MessageForm
+from .froms import MessageForm
 
 def home_view(request):
     user = request.user

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'chatrooms',
+    'moderation',
+    'manage_emojis'
 ]
 
 MIDDLEWARE = [

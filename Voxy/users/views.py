@@ -20,7 +20,7 @@ def sign_up(request):
     else:
         # Si la méthode n'est pas POST, créer une instance normale du formulaire
         form = UserCreationForm()
-
+        
     context = {'form': form}
     return render(request, 'users/connection.html', context)
 

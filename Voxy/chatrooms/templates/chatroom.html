@@ -59,8 +59,11 @@
                 <!-- afficher les messages envoyer au serveur django -->
             </div>
             <div class="saisie-message">
-                <input type="text" placeholder="Tapez votre message...">
-                <button id="bouton-envoi">Envoyer</button>
+                <form method="post" action="{% url 'home' %}">
+                    {% csrf_token %}
+                    {{ message_form.message }}
+                    <button type="submit">Envoyer</button>
+                </form>
             </div>
 
             {% if chatroom %}

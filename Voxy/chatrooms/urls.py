@@ -4,4 +4,5 @@ from . import views
 app_name = 'chatrooms'
 urlpatterns = [
     path('chatroom/', views.home_view, name='chatroom'),
+    path('chatroom/<int:chatroom_id>/', views.home_view, name='chatroom'),
 ]

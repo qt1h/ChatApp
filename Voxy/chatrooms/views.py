@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from .models import ChatRoom
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import ChatRoom, Message
 from .froms import MessageForm
 
-def home_view(request):
+def home_view(request, chatroom_id=None):
     user = request.user
     accessible_chatrooms = ChatRoom.objects.filter(participants=user)
     message_form = MessageForm()
@@ -10,12 +10,25 @@ def home_view(request):
     if request.method == 'POST':
         message_form = MessageForm(request.POST)
         if message_form.is_valid():
-            chatroom_id = request.POST.get('chatroom_id')
+            chatroom_id = message_form.cleaned_data.get('chatroom_id')
             message_content = message_form.cleaned_data['message']
             if chatroom_id and message_content:
                 chatroom = ChatRoom.objects.get(id=chatroom_id)
                 Message.objects.create(content=message_content, sender=user, chat_room=chatroom)
-                # Rediriger pour éviter le renvoi du formulaire lors du rechargement de la page
-                return redirect('home')
+                return redirect('chatrooms:chatroom', chatroom_id=chatroom_id)
 
-    return render(request, 'chatroom.html', {'user': user, 'accessible_chatrooms': accessible_chatrooms, 'message_form': message_form})
+    if chatroom_id is None:
+        # If no specific chatroom is requested, use the first accessible chatroom as the default
+        chatroom = accessible_chatrooms.first()
+        if chatroom is None:
+            # Redirect to a page indicating that no accessible chatrooms are available
+            return render(request, 'chatrooms:chatroom')
+        
+        
+        return redirect('chatrooms:chatroom', chatroom_id=chatroom.id)
+
+    # Retrieve the chatroom and its messages
+    chatroom = get_object_or_404(ChatRoom, id=chatroom_id)
+  
+    messages = chatroom.message_set.all()
+    return render(request, 'chatroom.html', {'user': user, 'accessible_chatrooms': accessible_chatrooms, 'message_form': message_form, 'chatroom': chatroom, 'messages': messages})

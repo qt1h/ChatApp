@@ -26,8 +26,12 @@ SECRET_KEY = 'django-insecure-*3%&u&i^eb=nsr9ggtsg8tmt!9zcc=cgye@*j2q0fu47&ca+8*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["kdibule.elitios.net"]
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://kdibule.elitios.net",
+]
 
 # Application definition
 

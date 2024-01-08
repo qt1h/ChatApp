@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,29 +12,9 @@
 </head>
 <body class="chatroom">
     <div class="barre-haut">
-        <div class="box-logo">
-            <img src="{% static 'img/logo_transparent.png' %}" alt="logo de l'application" />
-            <p>Voxy - Chat en ligne de père en fils</p>
-        </div>
-        <div class="boutons-haut">
-            <button id="bouton-parametre">
-                <!-- icone engrenage -->
-                <i class="fa-solid fa-gears" title="Paramètres"></i>
-            </button>
-            <button id="bouton-aide">
-                <!-- icone pour report un problème -->
-                <i class="fas fa-bug" title="Rapporter un bug"></i>
-            </button>
-            <button id="bouton-changement-theme">
-                <!-- icone lune -->
-                <i id="icone-theme" class="fas fa-moon" title="Changer de thème"></i>
-            </button>
-            <button id="bouton-profil">
-                <!-- icone profil -->
-                <i id="icone-theme" class="fa-solid fa-circle-user" title="Profil"></i>
-            </button>
-        </div>
+        <!-- ... Your existing header code ... -->
     </div>
+
     <div class="section-salons">
         <div class="salons-textuel">
             <div class="section-titre">
@@ -46,7 +27,7 @@
 
             {% for chatroom in accessible_chatrooms %}
                 <div class="encadre-salon">
-                    <a href="{% url 'chatroom_messages' chatroom.id %}">
+                    <a href="{% url 'chatrooms:chatroom' chatroom.id %}">
                         <h3>{{ chatroom.name }}</h3>
                         <p>{{ chatroom.description }}</p>
                     </a>
@@ -54,22 +35,14 @@
             {% endfor %}
 
         </div>
+
         <div class="section-chat">
-            <div class="message-serveur">
-                <!-- afficher les messages envoyer au serveur django -->
-            </div>
-            <div class="saisie-message">
-                <form method="post" action="{% url 'home' %}">
-                    {% csrf_token %}
-                    {{ message_form.message }}
-                    <button type="submit">Envoyer</button>
-                </form>
-            </div>
+            <!-- Your existing chat content goes here -->
 
             {% if chatroom %}
                 <div class="messages-list">
                     <h2>Messages du salon {{ chatroom.name }}</h2>
-                    {% for message in chatroom.messages.all %}
+                    {% for message in messages %}
                         <div class="message">
                             <p><strong>{{ message.sender.username }}</strong>: {{ message.content }}</p>
                             <p>{{ message.timestamp }}</p>
@@ -90,6 +63,7 @@
 
         </div>
     </div>
+
     <div class="barre-bas">
         <div class="pied-page">
             <p>© 2023 Voxy. Tous droits réservés.</p>

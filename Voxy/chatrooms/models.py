@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
+from manage_emojis.models import Emoji
 
 class ChatRoom(models.Model):
     name = models.CharField(max_length=255)
@@ -14,7 +15,7 @@ class Message(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE)  # La personne qui a posté le message
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
     chat_room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE)  # La chat room à laquelle le message est associé
-
+    emoji = models.ForeignKey(Emoji, on_delete=models.SET_NULL, null=True, blank=True)
     def __str__(self):
         return f"{self.sender.username} - {self.content[:50]}"
 

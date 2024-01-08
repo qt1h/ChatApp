@@ -26,6 +26,7 @@
             </div>
 
             {% for chatroom in accessible_chatrooms %}
+        
                 <div class="encadre-salon">
                     <a href="{% url 'chatrooms:chatroom' chatroom.id %}">
                         <h3>{{ chatroom.name }}</h3>
@@ -62,6 +63,19 @@
             {% endif %}
 
         </div>
+        <div>
+            <!-- Liste déroulante d'emojis -->
+            <label for="emoji">Sélectionnez un emoji :</label>
+            <select name="emoji" id="emoji">
+                {% for emoji in emojis %}
+                    <option value="{{ emoji.id }}">{{ emoji.symbol }} - {{ emoji.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Submit</button>
+        </div>
+            
+        </div> 
+            
     </div>
 
     <div class="barre-bas">

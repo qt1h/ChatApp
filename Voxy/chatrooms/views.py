@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import ChatRoom, Message
-from .froms import MessageForm
+from .forms import MessageForm
+from manage_emojis.models import Emoji
 
 def home_view(request, chatroom_id=None):
     user = request.user
     accessible_chatrooms = ChatRoom.objects.filter(participants=user)
     message_form = MessageForm()
-
+    emojis = Emoji.objects.all()
     if request.method == 'POST':
         message_form = MessageForm(request.POST)
         if message_form.is_valid():
@@ -22,7 +23,7 @@ def home_view(request, chatroom_id=None):
         chatroom = accessible_chatrooms.first()
         if chatroom is None:
             # Redirect to a page indicating that no accessible chatrooms are available
-            return render(request, 'chatrooms:chatroom')
+            return render(request, 'chatroom.html')
         
         
         return redirect('chatrooms:chatroom', chatroom_id=chatroom.id)
@@ -31,4 +32,4 @@ def home_view(request, chatroom_id=None):
     chatroom = get_object_or_404(ChatRoom, id=chatroom_id)
   
     messages = chatroom.message_set.all()
-    return render(request, 'chatroom.html', {'user': user, 'accessible_chatrooms': accessible_chatrooms, 'message_form': message_form, 'chatroom': chatroom, 'messages': messages})
+    return render(request, 'chatroom.html', {'user': user, 'accessible_chatrooms': accessible_chatrooms, 'message_form': message_form, 'chatroom': chatroom,'emojis': emojis, 'messages': messages})

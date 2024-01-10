@@ -7,38 +7,7 @@ body {
     
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    height: 10%;
-    background-color: #1f1f1f;
-    width: 100%;
-}
 
-#logo {
-    border-radius: 50%;
-    filter: saturate(2.2);
-}
-
-nav {
-    display: flex;
-    align-items: center;
-}
-
-nav ul {
-    list-style-type: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-right: 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
 
 main {
     width: 100%;
@@ -402,9 +371,111 @@ footer{
     text-align: center;
 }
 
-.chatroom #bouton-changement-theme:hover,
 .chatroom .ajouter-salon button:hover {
     background-color: rgb(49, 49, 170);
 }
 
-
+  
+   .barre-haut {
+    display: flex;
+    align-items: center;
+    padding: 2vh 4vh;
+    background-color: #36393F;
+    color: white;
+    max-height: 8vh;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+   .barre-haut .box-logo img {
+    max-height: 14vh;
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+    vertical-align: bottom;
+  }
+  
+   .barre-haut .box-logo img:hover {
+    transform: scale(1.1);
+  }
+  
+  
+   .barre-haut .box-logo img:hover {
+    animation: logoHover 0.3s ease-in-out;
+  }
+  
+  @keyframes logoHover {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+   .barre-haut .box-logo img:active {
+    animation: logoClick 0.1s ease-in-out;
+  }
+  
+   .barre-haut .boutons-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+   .barre-haut .boutons-container a {
+    font-size: 2vh;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    position: relative;
+    transition: color 0.3s;
+    padding: 8vh 4vh;
+    text-decoration: none;
+    
+    
+  }
+  
+   .barre-haut .boutons-container a:hover {
+    color: #9a72da;
+  }
+  
+  .barre-haut .boutons-container a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0.75vh;
+    background-color: #9a72da;
+    transition: width 0.3s;
+  }
+  
+   .barre-haut .boutons-container a:hover::after,
+   .barre-haut .boutons-container a:active::after {
+    width: 100%;
+  }
+  
+   .barre-haut .boutons-container a:active {
+    color: #2C2F33;
+  }
+  
+   .barre-haut .barre-recherche input[type="text"] {
+    padding: 1vh;
+    margin-right: 10vh;
+    margin-left: 80vh;
+    border: none;
+    border-radius: 1vh;
+    background-color: #484B50;
+    color: white;
+    width: 25vh;
+    
+  }
+  
+  .barre-haut .barre-recherche input[type="text"]:focus {
+    outline: none;
+    background-color: #7289DA;
+    
+  }
+  

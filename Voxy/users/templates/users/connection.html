@@ -11,17 +11,18 @@
     
 </head>
 <body id="body-login">
-    <header>
-        <img id="logo" src="{% static 'img/logosite1.png' %}" alt="Voxy" width="8%" height="8%"/>
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'users:login' %}">Login</a></li>
-                <li><a href="{% url 'chatrooms:chatroom' %}">Chatrooms</a></li>
-                <li><a href="support.html">Support</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="barre-haut">
+        <div class="box-logo">
+            <a href="{% url 'users:index' %}">
+                <img src="{% static 'img/logo_transparent.png' %}" alt="Logo de l'application">
+            </a>
+        </div>
+        <div class="boutons-container">
+          <a href="{% url 'users:login' %}" class="button">Login</a>
+          <a href="{% url 'chatrooms:chatroom' %}" class="button">Chatrooms</a>
+          <a href="" class="button">Help</a>
+        </div>
+      </div>
     <div id="container">
         <div class="ring">
             <i style="--clr:#460fc8;"></i>

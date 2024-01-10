@@ -33,3 +33,13 @@ def home_view(request, chatroom_id=None):
   
     messages = chatroom.message_set.all()
     return render(request, 'chatroom.html', {'user': user, 'accessible_chatrooms': accessible_chatrooms, 'message_form': message_form, 'chatroom': chatroom,'emojis': emojis, 'messages': messages})
+
+
+def create_chatroom(request):
+    if request.method == 'POST':
+        chatroom_name = request.POST.get('chatroom_name')
+        # Ajoutez d'autres champs ou validations si nécessaire
+
+        chatroom = ChatRoom.objects.create(name=chatroom_name)
+        chatroom.participants.add(request.user)  # Ajoutez le créateur du salon comme participant
+        return redirect('chatrooms:chatroom', chatroom_id=chatroom.id)

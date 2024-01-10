@@ -1,0 +1,244 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.barre-haut {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #23272A;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+.barre-haut .boutons-haut {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Ajout de cette ligne pour aligner à droite */
+}
+
+.barre-haut button,
+#bouton-changement-theme {
+    margin-left: 10px;
+}
+
+.barre-haut button {
+    background-color: #7289DA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.barre-haut button:hover {
+    background-color: rgb(49, 49, 170);
+}
+
+#bouton-parametre {
+    padding: 10px;
+}
+
+#bouton-parametre i {
+    font-size: 20px;
+}
+
+#bouton-aide {
+    padding: 10px;
+}
+
+#bouton-aide i {
+    font-size: 20px;
+}
+.barre-haut {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #23272A;
+    color: white;
+    height: 60px; /* Ajustez la hauteur de la barre supérieure selon vos besoins */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.box-logo {
+    display: flex;
+    align-items: center;
+}
+
+.box-logo img {
+    max-height: 150px; /* Utilisez la hauteur maximale en pourcentage de la barre supérieure */
+    width: auto; /* Assurez-vous que la largeur s'ajuste automatiquement en fonction de la hauteur */
+    margin-right: 10px; /* Ajustez la marge selon vos besoins */
+}
+
+.box-logo p {
+    margin: 0;
+}
+#bouton-changement-theme {
+    background-color: #7289DA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-sombre #bouton-changement-theme {
+    background-color: #4E5D94;
+}
+
+.barre-haut .boutons-haut {
+    display: flex;
+    align-items: center;
+}
+
+#bouton-changement-theme,
+#bouton-parametre,
+#bouton-aide, 
+#bouton-profil
+{
+    width: 30px; 
+    height: 30px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px; 
+}
+
+
+.section-salons {
+    display: flex;
+    flex: 1;
+    color: white;
+    background-color: #2C2F33;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.salons-textuel, .liste-utilisateurs {
+    flex: 0.2;
+    padding: 20px;
+    border-right: 2px solid #23272A;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.section-chat {
+    flex: 0.6;
+    padding: 20px;
+    border-right: 2px solid #23272A;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-serveur {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #23272A;
+    background-color: #23272A;
+    border-radius: 10px;
+    max-height: 100%;
+}
+
+.message-serveur p {
+    color: #7289DA;
+    margin: 5px 0;
+}
+
+.ajouter-salon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #23272A;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.ajouter-salon button {
+    padding: 10px 15px;
+    color: white;
+    background-color: #7289DA;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.ajouter-salon-titre {
+    color: white;
+}
+
+.encadre-salon {
+    flex-grow: 1;
+    border-radius: 10px;
+    background-color: #23272A;
+    padding: 20px;
+    margin-top: 20px;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+.saisie-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #23272A;
+    padding: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.saisie-message input {
+    flex: 1;
+    margin-right: 10px;
+    padding: 5px;
+    background-color: #23272A;
+    color: white;
+}
+
+h2 {
+    color: #7289DA;
+    margin: 0;
+}
+
+.section-titre, .liste-utilisateurs .section-titre {
+    background-color: #23272A;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.barre-bas {
+    background-color: #23272A;
+    color: white;
+    padding: 20px;
+}
+
+.pied-page {
+    text-align: center;
+}
+
+.pied-page p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.barre-haut button:hover, .barre-haut #bouton-parametre:hover, .barre-haut #bouton-aide:hover, 
+#bouton-changement-theme:hover,
+.ajouter-salon button:hover {
+    background-color: rgb(49, 49, 170);
+}

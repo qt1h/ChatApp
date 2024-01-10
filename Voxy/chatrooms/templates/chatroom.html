@@ -11,8 +11,29 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="chatroom">
-    <div class="barre-haut">
-        <!-- ... Your existing header code ... -->
+        <div class="barre-haut">
+        <div class="box-logo">
+            <img src="img/logo_transparent.png" alt="logo de l'application" />
+            <p>Voxy - Chat en ligne de père en fils</p>
+        </div>
+        <div class="boutons-haut">
+            <button id="bouton-parametre">
+                <!-- icone engrenage -->
+                <i class="fa-solid fa-gears"></i>
+            </button>
+            <button id="bouton-aide">
+                <!-- icone drapeau -->
+                <i class="fas fa-flag"></i>
+            </button>
+            <button id="bouton-changement-theme">
+                <!-- icone lune -->
+                <i id="icone-theme" class="fas fa-moon"></i>
+            </button>
+            <button id="bouton-profil">
+                <!-- icone profil -->
+                <i id="icone-theme" class="fa-solid fa-circle-user"></i>
+            </button>
+        </div>
     </div>
 
     <div class="section-salons">
@@ -21,10 +42,28 @@
                 <h2>Salons</h2>
             </div>
             <div class="ajouter-salon">
-                <button>+</button>
-                <div class="ajouter-salon-titre">Ajouter Salon</div>
-            </div>
+    <button onclick="toggleCreateChatroomForm()">+</button>
+    <div class="ajouter-salon-titre">Ajouter Salon</div>
+	</div>
 
+			<div id="createChatroomForm" style="display: none;">
+    		<form method="post" action="{% url 'chatrooms:create_chatroom' %}">
+        		{% csrf_token %}
+        		<label for="chatroom_name">Nom du salon:</label>
+        		<input type="text" name="chatroom_name" required>
+
+        <button type="submit">Créer</button>
+    </form>
+		</div>
+
+<script>
+    function toggleCreateChatroomForm() {
+        var form = document.getElementById("createChatroomForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+    }
+</script>
+
+	<div class="allchat">
             {% for chatroom in accessible_chatrooms %}
         
                 <div class="encadre-salon">
@@ -34,7 +73,7 @@
                     </a>
                 </div>
             {% endfor %}
-
+            </div>
         </div>
 
         <div class="section-chat">
@@ -50,7 +89,10 @@
                         </div>
                     {% endfor %}
                 </div>
-
+            <div class="saisie-message">
+                <input type="text" placeholder="Tapez votre message...">
+                <button id="bouton-envoi">Envoyer</button>
+            </div>
                 <div class="liste-utilisateurs">
                     <div class="section-titre">
                         <h2>Membres</h2>
@@ -63,6 +105,7 @@
             {% endif %}
 
         </div>
+        
         <div>
             <!-- Liste déroulante d'emojis -->
             <label for="emoji">Sélectionnez un emoji :</label>
@@ -74,15 +117,10 @@
             <button type="submit">Submit</button>
         </div>
             
-        </div> 
-            
     </div>
-
-    <div class="barre-bas">
-        <div class="pied-page">
+    <footer>
             <p>© 2023 Voxy. Tous droits réservés.</p>
-        </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

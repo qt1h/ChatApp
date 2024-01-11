@@ -440,16 +440,17 @@ footer{
   }
   
    .barre-haut .boutons-container a:hover {
-    color: #9a72da;
+    color: #fbfbfb;
   }
   
   .barre-haut .boutons-container a::after {
     content: '';
     display: block;
     width: 0;
-    height: 0.75vh;
-    background-color: #9a72da;
+    height: 0.2vh;
+    background-color: rgb(2, 0, 5);
     transition: width 0.3s;
+    
   }
   
    .barre-haut .boutons-container a:hover::after,

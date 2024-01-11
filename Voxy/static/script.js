@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // script.js
 
 const chatSocket = new WebSocket(
-    "ws://" + window.location.host +
-    "/ws/chat/" + chatroomId + "/"
+    "chatrooms://" + window.location.host +
+    "/chatrooms/chatroom/" + document.body.dataset.chatroomId + "/"
 );
 
 chatSocket.onmessage = function (e) {
@@ -47,7 +47,7 @@ sendButton.addEventListener('click', function () {
     if (messageContent !== '') {
         const messageData = {
             message: messageContent,
-            chatroom_id: chatroomId,
+            chatroom_id: document.body.dataset.chatroomId,
         };
 
         chatSocket.send(JSON.stringify(messageData));

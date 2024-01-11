@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'users',
     'chatrooms',
     'moderation',
-    'manage_emojis'
+    'manage_emojis',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Voxy.wsgi.application'
+ASGI='Voxy.routing.application'
 
 
 # Database

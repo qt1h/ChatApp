@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- sert pour les boutons -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'script.js' %}"></script>
 </head>
-<body class="chatroom">
+<body class="chatroom" data-chatroom-id="{{ chatroom.id }}">
     <header>
         <div class="barre-haut">
             <div class="box-logo">
@@ -83,7 +84,7 @@
                     {% endfor %}
                 </div>
             <div class="saisie-message">
-                <input type="text" placeholder="Tapez votre message...">
+                <input class ="messages" type="text" placeholder="Tapez votre message...">
                 <button id="bouton-envoi">Envoyer</button>
             </div>
                 <div class="liste-utilisateurs">
@@ -114,7 +115,5 @@
     <footer>
             <p>© 2023 Voxy. Tous droits réservés.</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>

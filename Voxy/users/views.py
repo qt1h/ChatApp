@@ -16,7 +16,7 @@ def sign_up(request):
 
         if form.is_valid():
             user = form.save()
-            return redirect('users:index')  # Rediriger vers la page d'accueil après une inscription réussie
+            return render(request, 'index.html')  # Rediriger vers la page d'accueil après une inscription réussie
     else:
         # Si la méthode n'est pas POST, créer une instance normale du formulaire
         form = UserCreationForm()
@@ -31,7 +31,7 @@ def log_in(request):
             user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('index')  # Redirect to your home page after successful login
+                return redirect('/chatroom/')  # Redirect to your home page after successful login
     else:
         form = AuthenticationForm()
     return render(request, 'users/connection.html', {'form': form})

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Game - 404 Error</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+
+        .mid-404 {
+            text-align: center;
+            margin: 2vh auto;
+            height: 90vh;
+            padding: 20vh;
+            background-color: #23272A;
+        }
+
+        h1 {
+            font-size: 5em;
+            color: #e74c3c;
+            margin: 0;
+        }
+
+        p:not(#f404){
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #f0f0f0;
+        }
+
+       span{
+        font-size: 10em;
+       }
+    </style>
+
+</head>
+<body id="page-404">
+    <header>
+        <div class="barre-haut">
+            <div class="box-logo">
+                <a href="{% url 'users:index' %}">
+                    <img src="{% static 'img/logo_transparent.png' %}" alt="Logo de l'application">
+                </a>
+            </div>
+            <div class="boutons-container">
+              <a href="{% url 'users:login' %}" class="button">Login</a>
+              <a href="{% url 'chatrooms:chatroom' %}" class="button">Chatrooms</a>
+              <a href="" class="button">Help</a>
+            </div>
+          </div>
+    </header>
+
+    <section class="mid-404">
+        <h1>404 - Page Not Found</h1>
+        <p>Sorry, but the page you were looking for could not be found. </p>
+        <span>🥹</span>
+    </section>
+
+    <footer id="f404">
+        <p>&copy; 2023 Voxy. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

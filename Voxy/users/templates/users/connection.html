@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voxy - Chat en ligne</title>
+    <title>Voxy - Online chat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- sert pour les boutons -->
+    <!-- useful for buttons -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
 </head>
 <body id="body-login">
-    <div class="barre-haut">
+    <div class="menu-nav">
         <div class="box-logo">
             <a href="{% url 'users:index' %}">
-                <img src="{% static 'img/logo_transparent.png' %}" alt="Logo de l'application">
+                <img src="{% static 'img/logo_transparent.png' %}" alt="App logo">
             </a>
         </div>
         <div class="boutons-container">
@@ -61,14 +61,14 @@
                         <input type="submit" value="Log in" id="login">
                     </div>
                 </form>
-                <a href="/forgot-password">Forgot password?</a>
+                <!-- todo : <a href="/forgot-password">Forgot password?</a> -->
             </div>
         </div>
        
     </div>
     <footer>
-        <p>&copy; 2023 Voxy. Tous droits réservés.</p>
+        <p>&copy; 2023 Voxy. All rights deserved.</p>
     </footer>
-    <!-- TODO fix the scrollbarposition when launching the signup-->
+
 </body>
 </html>

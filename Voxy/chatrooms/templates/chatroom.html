@@ -1,17 +1,17 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voxy - Chat en ligne</title>
+    <title>Voxy - Online chat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- sert pour les boutons -->
+    <!-- useful for buttons -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="chatroom" data-chatroom-id="{{ chatroom.id }}">
- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
 var chatroom_id = {{ chatroom.id }};
@@ -25,7 +25,6 @@ function getNewMessages() {
     $.get(`/rafraichir_messages/${chatroom_id}/?last_message_id=${last_message_id}`, function (data) {
         data.messages.forEach(function (message) {
             if (message.is_deleted) {
-                // Remplacez le contenu du message par "Message supprimé"
                 $(`#message-${message.id}`).find('.message-content').html("Message supprimé");
             } else if (!$(`#message-${message.id}`).length) {
                 var timestamp = moment(message.timestamp).format("DD/MM/YYYY HH:mm:ss");
@@ -43,19 +42,16 @@ function getNewMessages() {
 
 $(document).ready(function () {
     setInterval(getNewMessages, 500);
-    // Bouton pour ajouter l'émoticône au champ de message
+    // Button to display the emoji in the message
     $('#ajouterEmoji').click(function () {
                 var selectedEmoji = $('#emojiSelect').val();
                 var messageContent = $('#message-input').val();
                 $('#message-input').val(messageContent + ' ' + selectedEmoji);
             });
-
-    // Bouton pour envoyer le message
+    // Button to send the message
     $('#bouton-envoi').click(function (e) {
         e.preventDefault();
-
         var messageContent = $('#message-input').val();
-
         $.post(`/send_message/`, { chatroom_id: chatroom_id, message: messageContent, csrfmiddlewaretoken: '{{ csrf_token }}' })
             .done(function (data) {
                 if (data.status === 'success') {
@@ -70,7 +66,7 @@ $(document).ready(function () {
             });
     });
 
-    // Add a click event listener for delete spans
+    // To delete messages
     $('#messages-list').on('click', '.delete-message', function () {
         var messageId = $(this).data('message-id');
 
@@ -78,12 +74,10 @@ $(document).ready(function () {
             console.log('Delete Message Response:', data);
 
             if (data.status === 'success') {
-                // Mettez à jour le contenu du message supprimé
                 $(`#message-${messageId}`).find('.message-content').html("Message supprimé");
-                // Vous pouvez également masquer le bouton de suppression si nécessaire
-                // $(`#message-${messageId}`).find('.delete-message').hide();
+                
+                $(`#message-${messageId}`).find('.delete-message').hide();
             } else {
-                // Handle error if needed
                 console.error('Error:', data.message);
             }
         });
@@ -93,17 +87,16 @@ $(document).ready(function () {
         $('#message-input').val('');
     }
 
-
 });
 
 </script>
 
     
     <header>
-        <div class="barre-haut">
+        <div class="menu-nav">
             <div class="box-logo">
                 <a href="{% url 'users:index' %}">
-                    <img src="{% static 'img/logo_transparent.png' %}" alt="Logo de l'application">
+                    <img src="{% static 'img/logo_transparent.png' %}" alt="App logo">
                 </a>
             </div>
             <div class="boutons-container">
@@ -117,20 +110,20 @@ $(document).ready(function () {
     <div class="section-salons">
         <div class="salons-textuel">
             <div class="section-titre">
-                <h2>Salons</h2>
+                <h2>Rooms</h2>
             </div>
             <div class="ajouter-salon">
                 <button onclick="toggleCreateChatroomForm()">+</button>
-                <div class="ajouter-salon-titre">Ajouter Salon</div>
+                <div class="ajouter-salon-titre">Add room</div>
             </div>
 
             <div id="createChatroomForm" style="display: none;">
                 <form method="post" action="{% url 'chatrooms:create_chatroom' %}">
                     {% csrf_token %}
-                    <label for="chatroom_name">Nom du salon:</label>
+                    <label for="chatroom_name">Room name :</label>
                     <input type="text" name="chatroom_name" required>
 
-                    <button type="submit">Créer</button>
+                    <button type="submit">Create</button>
                 </form>
             </div>
 
@@ -153,44 +146,43 @@ $(document).ready(function () {
         </div>
 
         <div class="section-chat">
-            {% if chatroom %}
-            <h2>Messages du salon {{ chatroom.name }}</h2>
-                <div class="messages-list" id="messages-list">
-                    {% for message in messages %}
-    <div class="message deleted-message" id="message-{{ message.id }}">
-        {% if message.is_deleted %}
-            <p><strong>{{ message.sender }}</strong> : <span class="message-content">Message supprimé</span></p>
-            <p>{{ message.timestamp }}</p>
+        {% if chatroom %}
+            <h2>Room messages {{ chatroom.name }}</h2>
+            <div class="messages-list" id="messages-list">
+        {% for message in messages %}
+                <div class="message deleted-message" id="message-{{ message.id }}">
+            {% if message.is_deleted %}
+                    <p><strong>{{ message.sender }}</strong> : <span class="message-content">Message deleted</span></p>
+                    <p>{{ message.timestamp }}</p>
             {% if message.sender == user or chatroom.creator == user %}
-               
             {% endif %}
-        {% else %}
+            {% else %}
             <p><strong>{{ message.sender }}</strong> :<span class="message-content">{{ message.content }}</span></p>
             <p class="p2">{{ message.timestamp }}</p>
             {% if message.sender == user or chatroom.creator == user %}
                 <span class="delete-message" data-message-id="{{ message.id }}">x</span>
             {% endif %}
         {% endif %}
-    </div>
-{% endfor %}
                 </div>
+        {% endfor %}
+            </div>
                 <div class="saisie-message">
                     <form id="messageForm" method="post" action="{% url 'chatrooms:send_message' %}">
                         {% csrf_token %}
                         <input type="hidden" name="chatroom_id" value="{{ chatroom.id }}">
                         <input type="text" name="message" placeholder="Tapez votre message..." id="message-input">
                         
-                        <!-- Ajout du bouton pour ajouter l'émoticône au champ de message -->
-                        <button type="button" id="ajouterEmoji">Ajouter Emoji</button>
-                        
+                        <!-- button to add an emoji -->
+                        <button type="button" id="ajouterEmoji">Add Emoji</button>
+
                         <select name="emoji" id="emojiSelect">
                             {% for emoji in emojis %}
                                 <option value="{{ emoji.symbol }}">{{ emoji.symbol }} - {{ emoji.name }}</option>
                             {% endfor %}
                         </select>
 
-                        <!-- Bouton pour envoyer le message -->
-                        <button type="submit" id="bouton-envoi">Envoyer</button>
+                        <!-- button to send the message -->
+                        <button type="submit" id="bouton-envoi">Send</button>
                     </form>
                 </div>
                     
@@ -199,15 +191,15 @@ $(document).ready(function () {
         <div class="liste-utilisateurs">
             {% if chatroom %}
             <div class="membres">
-                    <h2>Membres</h2>
+                    <h2>Members</h2>
             </div>
             {% if user == chatroom.creator %}
             <div class="add-user-to-chatroom">
                <form id="addUserForm" method="post" action="{% url 'chatrooms:add_user_to_chatroom' chatroom.id %}">
                     {% csrf_token %}
-                    <label for="username">Ajouter un utilisateur au salon:</label>
+                    <label for="username">Add an user in room:</label>
                     <input type="text" name="username" id="username" required>
-                    <button type="submit">Ajouter</button>
+                    <button type="submit">Add</button>
                 </form>
             </div>
         {% endif %}
@@ -225,6 +217,6 @@ $(document).ready(function () {
   
     
     <footer>
-        <p>© 2023 Voxy. Tous droits réservés.</p>    </footer>
+        <p>© 2023 Voxy. All rights deserved.</p>    </footer>
 </body>
 </html>

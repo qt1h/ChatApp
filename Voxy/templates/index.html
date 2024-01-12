@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +9,10 @@
 </head>
 <body>
     <header>
-        <div class="barre-haut">
+        <div class="menu-nav">
             <div class="box-logo">
                 <a href="{% url 'users:index' %}">
-                    <img src="{% static 'img/logo_transparent.png' %}" alt="Logo de l'application">
+                    <img src="{% static 'img/logo_transparent.png' %}" alt="App logo">
                 </a>
             </div>
             <div class="boutons-container">
@@ -24,29 +24,29 @@
     </header>
     <main>
         <section class="section-1-index">
-            <h1>Bienvenue sur Voxy</h1>
-            <p>L'application de discussions en ligne</p>
+            <h1>Welcome to Voxy</h1>
+            <p>The online chat app</p>
         </section>
         <section class="forum">
-            <h2>Dernières discussions</h2>
+            <h2>Last discussions</h2>
             <ul>
                 <li>
-                    <a href="{% url 'chatrooms:chatroom' chatroom_id=33 %}">Discussion 1</a>
-                    <p>Auteur : <strong>{{chat_room.creator.username}}</strong></p>
+                    <a href="{% url 'chatrooms:chatroom' chatroom_id=33 %}">Room 1</a>
+                    <p>Autor : <strong>{{chat_room.creator.username}}</strong></p>
                 </li>
                 <li>
-                    <a href="{% url 'chatrooms:chatroom' chatroom_id=34 %}">Discussion 2</a>
-                    <p>Auteur : {{chat_room.creator.username}}</p>
+                    <a href="{% url 'chatrooms:chatroom' chatroom_id=34 %}">Room 2</a>
+                    <p>Autor : {{chat_room.creator.username}}</p>
                 </li>
                 <li>
-                    <a href="{% url 'chatrooms:chatroom' chatroom_id=35 %}">Discussion 3</a>
-                    <p>Auteur : {{creator.username}}</p>
+                    <a href="{% url 'chatrooms:chatroom' chatroom_id=35 %}">Room 3</a>
+                    <p>Autor : {{creator.username}}</p>
                 </li>
             </ul>
         </section>
     </main>
     <footer>
-        <p>&copy; 2023 Voxy. Tous droits réservés.</p>
+        <p>&copy; 2023 Voxy. All rights deserved.</p>
     </footer>
 </body>
 </html>

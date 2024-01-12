@@ -4,23 +4,22 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 
-
 def sign_up(request):
     if request.method == 'POST':
-        # Créer une instance du formulaire
+        # Create the form
         form = UserCreationForm(request.POST)
 
-        # Modifier les messages d'aide dynamiquement
+        # Modify the messages dinamacally
         form.fields['username'].help_text = ''#Will be displayed
         form.fields['password1'].help_text = ''#Decide a new password
 
         if form.is_valid():
             user = form.save()
-            return render(request, 'index.html')  # Rediriger vers la page d'accueil après une inscription réussie
+            return render(request, 'index.html')
     else:
-        # Si la méthode n'est pas POST, créer une instance normale du formulaire
+        # If method is not post
         form = UserCreationForm()
-        
+
     context = {'form': form}
     return render(request, 'users/connection.html', context)
 
@@ -31,7 +30,7 @@ def log_in(request):
             user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('/chatroom/')  # Redirect to your home page after successful login
+                return redirect('/chatroom/')
     else:
         form = AuthenticationForm()
     return render(request, 'users/connection.html', {'form': form})

@@ -7,4 +7,4 @@ def custom_404(request, exception=None):
     return render(request, '404.html', status=404)
 
 def help(request):
-    return render(request, './help.html')
+    return render(request, 'help.html')

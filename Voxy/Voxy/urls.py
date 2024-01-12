@@ -9,6 +9,6 @@ urlpatterns = [
     path('help/', views.help, name='help'),
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
-    path('', include('chatrooms.urls')),
+    path('', include('chatrooms.urls'))
 ]
 

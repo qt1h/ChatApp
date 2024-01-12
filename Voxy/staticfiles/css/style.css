@@ -501,16 +501,25 @@ footer{
 .barre-haut .boutons-container a:active {
     color: #2C2F33;
 }
-
+.add-user-to-chatroom{
+    text-align: center;
+    margin-bottom: 5%;
+}
 .message p {
-    white-space: pre-wrap; /* This will make the content wrap onto a new line */
+    width: 60%;
+    white-space: pre-wrap;
+}
+
+.message p:nth-child(2) {
+    margin-left: auto;
+    text-align: -webkit-right;
 }
 
 .delete-message {
     color: red;
     cursor: pointer;
-    font-size: 20px;
-    margin-left: 5px;
+    font-size: 24px;
+    margin-left: 5%;
 }
 
 .message{

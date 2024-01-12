@@ -17,7 +17,10 @@
     var chatroom_id = {{ chatroom.id }};
 var last_message_id = {{ last_message_id|default:0 }};
 var deletedMessageIds = [];
-
+function toggleCreateChatroomForm() {
+        var form = document.getElementById("createChatroomForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+    }
 function getNewMessages() {
     $.get(`/rafraichir_messages/${chatroom_id}/?last_message_id=${last_message_id}`, function (data) {
         data.messages.forEach(function (message) {
@@ -90,10 +93,7 @@ $(document).ready(function () {
         $('#message-input').val('');
     }
 
-    function toggleCreateChatroomForm() {
-        var form = document.getElementById("createChatroomForm");
-        form.style.display = form.style.display === "none" ? "block" : "none";
-    }
+
 });
 
 </script>
@@ -166,7 +166,7 @@ $(document).ready(function () {
             {% endif %}
         {% else %}
             <p><strong>{{ message.sender }}</strong>: <span class="message-content">{{ message.content }}</span></p>
-            <p>{{ message.timestamp }}</p>
+            <p class="p2">{{ message.timestamp }}</p>
             {% if message.sender == user or chatroom.creator == user %}
                 <span class="delete-message" data-message-id="{{ message.id }}">x</span>
             {% endif %}
@@ -201,6 +201,17 @@ $(document).ready(function () {
             <div class="membres">
                     <h2>Membres</h2>
             </div>
+            {% if user == chatroom.creator %}
+            <div class="add-user-to-chatroom">
+               <form id="addUserForm" method="post" action="{% url 'chatrooms:add_user_to_chatroom' chatroom.id %}">
+                    {% csrf_token %}
+                    <label for="username">Ajouter un utilisateur au salon:</label>
+                    <input type="text" name="username" id="username" required>
+                    <button type="submit">Ajouter</button>
+                </form>
+            </div>
+        {% endif %}
+        
             <div class="encadre-membres">
                 {% for participant in chatroom.participants.all %}
                     <div>{{ participant.username }}</div>
@@ -208,17 +219,7 @@ $(document).ready(function () {
             </div>
         {% endif %}
         
-        {% if user == chatroom.creator %}
-    <div class="add-user-to-chatroom">
-       <form id="addUserForm" method="post" action="{% url 'chatrooms:add_user_to_chatroom' chatroom.id %}">
-            {% csrf_token %}
-            <label for="username">Ajouter un utilisateur au salon:</label>
-            <input type="text" name="username" id="username" required>
-            <button type="submit">Ajouter</button>
-        </form>
-    </div>
-{% endif %}
-
+  
         </div>
  </div>
   

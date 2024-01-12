@@ -11,7 +11,4 @@ urlpatterns = [
     path('send_message/', views.send_message, name='send_message'),
     path('add_user/<int:chatroom_id>/', views.add_user_to_chatroom, name='add_user_to_chatroom'), 
     path('delete_message/<int:message_id>/', views.delete_message, name='delete_message'),
-
-   
-    
 ]

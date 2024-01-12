@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dino Game - 404 Error</title>
+    <title>404 Error</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <style>
 
@@ -45,7 +45,7 @@
             <div class="boutons-container">
               <a href="{% url 'users:login' %}" class="button">Login</a>
               <a href="{% url 'chatrooms:chatroom' %}" class="button">Chatrooms</a>
-              <a href="" class="button">Help</a>
+              <a href="{% url 'help' %}" class="button">Help</a>
             </div>
           </div>
     </header>

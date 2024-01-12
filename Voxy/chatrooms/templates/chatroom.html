@@ -14,7 +14,7 @@
  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
-    var chatroom_id = {{ chatroom.id }};
+var chatroom_id = {{ chatroom.id }};
 var last_message_id = {{ last_message_id|default:0 }};
 var deletedMessageIds = [];
 function toggleCreateChatroomForm() {
@@ -109,7 +109,7 @@ $(document).ready(function () {
             <div class="boutons-container">
                 <a href="{% url 'users:login' %}" class="button">Login</a>
                 <a href="{% url 'chatrooms:chatroom' %}" class="button">Chatrooms</a>
-                <a href="" class="button">Help</a>
+                <a href="{% url 'help' %}" class="button">Help</a>
             </div>
         </div>
     </header>
@@ -159,13 +159,13 @@ $(document).ready(function () {
                     {% for message in messages %}
     <div class="message deleted-message" id="message-{{ message.id }}">
         {% if message.is_deleted %}
-            <p><strong>{{ message.sender }}</strong>: <span class="message-content">Message supprimé</span></p>
+            <p><strong>{{ message.sender }}</strong> : <span class="message-content">Message supprimé</span></p>
             <p>{{ message.timestamp }}</p>
             {% if message.sender == user or chatroom.creator == user %}
                
             {% endif %}
         {% else %}
-            <p><strong>{{ message.sender }}</strong>: <span class="message-content">{{ message.content }}</span></p>
+            <p><strong>{{ message.sender }}</strong> :<span class="message-content">{{ message.content }}</span></p>
             <p class="p2">{{ message.timestamp }}</p>
             {% if message.sender == user or chatroom.creator == user %}
                 <span class="delete-message" data-message-id="{{ message.id }}">x</span>

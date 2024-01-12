@@ -17,7 +17,7 @@ main {
     margin-top: 2.5vh;
 }
 
-.hero {
+.section-1-index {
     top: 0%;
     background-color: #381C48;
     filter: saturate(2.2);
@@ -49,13 +49,13 @@ main {
     text-decoration: none;
 }
 
-body.dark {
+body{
     color: #fff;
     background-color: #000;
     width: 100%;
 }
 
-body.dark nav ul li a {
+body nav ul li a {
     color: #fff;
 }
 
@@ -354,9 +354,10 @@ footer{
     align-items: center;
     border-top: 2px solid #23272A;
     padding: 10px;
-    width: 50%;
+    width: 110%;
     margin: 5% auto;
-    height:15%;
+    height:18%;
+    background:rgb(35, 39, 42);
 }
 
 .chatroom .saisie-message input {
@@ -507,7 +508,14 @@ footer{
 }
 .message p {
     width: 60%;
+    color: #F8F8FF;
     white-space: pre-wrap;
+
+    border-radius:1%;
+}
+
+.section-chat{
+    background-color: rgb(204, 34, 51, 0.333);
 }
 
 .message p:nth-child(2) {
@@ -524,4 +532,14 @@ footer{
 
 .message{
     display:flex;
+}
+
+strong{
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.chatroom h2{
+    text-align: center;
 }

@@ -7,7 +7,7 @@
     <title>Voxy</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body class="dark index-page">
+<body>
     <header>
         <div class="barre-haut">
             <div class="box-logo">
@@ -18,12 +18,12 @@
             <div class="boutons-container">
               <a href="{% url 'users:login' %}" class="button">Login</a>
               <a href="{% url 'chatrooms:chatroom' %}" class="button">Chatrooms</a>
-              <a href="" class="button">Help</a>
+              <a href="{% url 'help' %}" class="button">Help</a>
             </div>
           </div>
     </header>
     <main>
-        <section class="hero">
+        <section class="section-1-index">
             <h1>Bienvenue sur Voxy</h1>
             <p>L'application de discussions en ligne</p>
         </section>
@@ -31,16 +31,16 @@
             <h2>Dernières discussions</h2>
             <ul>
                 <li>
-                    <a href="#">Discussion 1</a>
-                    <p>Auteur : Auteur 1</p>
+                    <a href="{% url 'chatrooms:chatroom' chatroom_id=33 %}">Discussion 1</a>
+                    <p>Auteur : <strong>{{chat_room.creator.username}}</strong></p>
                 </li>
                 <li>
-                    <a href="#">Discussion 2</a>
-                    <p>Auteur : Auteur 2</p>
+                    <a href="{% url 'chatrooms:chatroom' chatroom_id=34 %}">Discussion 2</a>
+                    <p>Auteur : {{chat_room.creator.username}}</p>
                 </li>
                 <li>
-                    <a href="#">Discussion 3</a>
-                    <p>Auteur : Auteur 3</p>
+                    <a href="{% url 'chatrooms:chatroom' chatroom_id=35 %}">Discussion 3</a>
+                    <p>Auteur : {{creator.username}}</p>
                 </li>
             </ul>
         </section>

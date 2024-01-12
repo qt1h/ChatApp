@@ -170,7 +170,7 @@ $(document).ready(function () {
                     <form id="messageForm" method="post" action="{% url 'chatrooms:send_message' %}">
                         {% csrf_token %}
                         <input type="hidden" name="chatroom_id" value="{{ chatroom.id }}">
-                        <input type="text" name="message" placeholder="Tapez votre message..." id="message-input">
+                        <input type="text" name="message" placeholder="Write your message..." id="message-input">
                         
                         <!-- button to add an emoji -->
                         <button type="button" id="ajouterEmoji">Add Emoji</button>

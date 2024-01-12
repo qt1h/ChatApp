@@ -1,14 +1,16 @@
+header{
+    height:10vh;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    
-}
-
-header{
-    height:10vh;
+    color: #fff;
+    background-color: #000;
+    width: 100%;
 }
 
 main {
@@ -49,12 +51,6 @@ main {
     text-decoration: none;
 }
 
-body{
-    color: #fff;
-    background-color: #000;
-    width: 100%;
-}
-
 body nav ul li a {
     color: #fff;
 }
@@ -67,15 +63,14 @@ footer{
     text-align: center;
     color: white;
     margin-top: 5%;
-
 }
 
 /* Connection page */
 
 .ring {
     position: absolute;
-    width: 600px; /* Ajusté la taille des anneaux */
-    height: 600px; /* Ajusté la taille des anneaux */
+    width: 600px; 
+    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,15 +119,11 @@ footer{
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     z-index: 2;
     position: relative;
-
-    /* Ajoutez les propriétés suivantes pour permettre le défilement vertical */
-    max-height: 80%; /* ou une valeur appropriée en fonction de votre mise en page */
+    max-height: 80%; 
     overflow-y: auto;
     margin-top:30%;
     margin-bottom:30%;
     text-align: center;
-    
-    
 }
 
 .login h2 {
@@ -140,9 +131,8 @@ footer{
     color: #fff;
 }
 
-
 .login input {
-    width: calc(100% - 40px); /* Ajusté la largeur pour éviter le dépassement */
+    width: calc(100% - 40px);
     padding: 12px 20px;
     background: transparent;
     border: 2px solid #fff;
@@ -194,18 +184,18 @@ footer{
 }
 
 ::-webkit-scrollbar {
-    width: 12px; /* largeur de la scrollbar */
+    width: 12px; /* largeur scrollbar */
     height: fit-content;
 }
   
 ::-webkit-scrollbar-track {
-    background-color: #000; /* couleur de fond de la scrollbar */
+    background-color: #000; /* couleur fond scrollbar */
     border-radius: 6px;
 }
   
 ::-webkit-scrollbar-thumb {
-    background-color: #23272A; /* couleur de la poignée de la scrollbar */
-    border-radius: 6px; /* coins arrondis de la poignée */
+    background-color: #23272A; /* couleur poignée scrollbar */
+    border-radius: 6px; /* coins poignée */
     height:20%;
 }
 
@@ -218,10 +208,10 @@ footer{
     }
 }
 
-
 /* Login/signin buttons */
+
 #login-form, #signup-form {
-    position: relative; /* or position: static; */
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -245,7 +235,9 @@ footer{
 .errorlist{
     color:#ccc;
 }
+
 /* Chatroom page */
+
 .chatroom body{
     margin: 0;
     font-family: Arial, sans-serif;
@@ -263,18 +255,15 @@ footer{
     background-color: #2C2F33;
     transition: background-color 0.3s, color 0.3s;
     height: 90vh;
-
-
 }
 
 .chatroom .salons-textuel {
     width: 20%;
     padding: 20px;
     border-right: 2px solid #23272A;
-
     margin-bottom: 5%;
-
 }
+
 .chatroom .section-chat {
     padding: 20px;
     border-right: 2px solid #23272A;
@@ -371,8 +360,6 @@ footer{
     margin-left: -10px; 
 }
 
-
-
 .chatroom .saisie-message input {
     flex: 1;
     margin-right: 10px;
@@ -380,9 +367,6 @@ footer{
     background-color: #23272A;
     color: white;
 }
-
-
-
 
 #messageForm{
     scale:2;
@@ -394,17 +378,16 @@ footer{
     border-radius: 5px;
     margin-bottom: 20px;
     text-align: center;
-   
 }
+
 .liste-utilisateurs {
     display: block;
-    flex-direction: column; /* Alignez les éléments en colonne */
-    align-items: center; /* Centrez les éléments verticalement */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     height: 90vh;
     width: 20%;
 }
-
 
 .encadre-membres {
     background-color: #23272A;
@@ -423,8 +406,6 @@ footer{
     text-align: center;
     width:93%
 }
-
-
 
 .chatroom .ajouter-salon button:hover {
     background-color: rgb(49, 49, 170);
@@ -451,7 +432,6 @@ footer{
 .menu-nav .box-logo img:hover {
     transform: scale(1.1);
 }
-  
   
 .menu-nav .box-logo img:hover {
     animation: logoHover 0.3s ease-in-out;
@@ -512,18 +492,18 @@ footer{
 .menu-nav .boutons-container a:active {
     color: #2C2F33;
 }
+
 .add-user-to-chatroom{
     text-align: center;
     margin-bottom: 5%;
 }
+
 .message p {
     width: 60%;
     color: #F8F8FF;
     white-space: pre-wrap;
-
     border-radius:1%;
 }
-
 
 .message p:nth-child(2) {
     margin-left: auto;
@@ -544,8 +524,8 @@ footer{
 strong{
     font-size: 20px;
     font-weight: bold;
-
 }
+
 .chatroom h2 {
     color: #7289DA;
     margin: 1vh;
